@@ -1,0 +1,36 @@
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true         # use n and N to move between diff sections
+    light = true            # set to true if terminal background is light
+    line-numbers = true
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[user]
+    name = royrustdev
+    email = royrustdev@gmail.com
+[color]
+    ui = true
+[init]
+    defaultBranch = main
+
+[github]
+	user = royrustdev
+[alias]
+	c = commit
+	s = status
+	st = status
+	lg = log --oneline
+	last = log -1 HEAD
+	cl = log -p -- ':(exclude)Cargo.lock'
+	f = push --force-with-lease
+	# https://stackoverflow.com/a/11688523/472927
+	ss = "!f() { git stash show stash^{/$*} -p; }; f"
+	sa = "!f() { git stash apply stash^{/$*}; }; f"
+	sl = stash list
