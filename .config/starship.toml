@@ -1,0 +1,93 @@
+format = """
+[](#FD1C7A)\
+$username\
+[](bg:#0072B5 fg:#FD1C7A)\
+$directory\
+[](fg:#0072B5 bg:#BD4291)\
+$git_branch\
+$git_status\
+[](fg:#BD4291 bg:#D61C4E)\
+$elixir\
+$elm\
+$golang\
+$julia\
+$nodejs\
+$rust\
+[](fg:#D61C4E bg:#FF9F29)\
+$docker_context\
+[ ](fg:#FF9F29)\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+[username]
+show_always = true
+style_user = "bg:#FD1C7A"
+style_root = "bg:#FD1C7A"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bg:#0072B5"
+format = "[ﳎ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#BD4291"
+format = '[[ $symbol $branch ](bg:#BD4291)]($style)'
+
+[git_status]
+style = "bg:#BD4291"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+up_to_date = "✓"
+staged = '[++\($count\)](bg:#BD4291)'
+deleted = "🗑"
+untracked = "שּ"
+stashed = "📦"
+modified = "📝"
+format = '[[($all_status$ahead_behind )](bg:#BD4291)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#FF9F29"
+format = '[[ $symbol $context ](bg:#FF9F29)]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#D61C4E"
+format = '[[ $symbol ($version) ](bg:#D61C4E)]($style)'
