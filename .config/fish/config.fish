@@ -7,6 +7,8 @@ abbr -a gs 'git status'
 abbr -a gp 'git push'
 abbr -a ga 'git add -p'
 
+abbr -a pn pnpm
+
 if command -v exa > /dev/null
 	abbr -a l 'exa'
 	abbr -a ls 'exa'
@@ -21,3 +23,7 @@ end
 
 zoxide init fish | source
 starship init fish | source
+# pnpm
+set -gx PNPM_HOME "/home/royrustdev/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
