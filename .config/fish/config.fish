@@ -5,7 +5,7 @@ abbr -a g git
 abbr -a gc 'git commit'
 abbr -a gs 'git status'
 abbr -a gp 'git push'
-abbr -a ga 'git add -p'
+abbr -a ga 'git add'
 
 abbr -a pn pnpm
 
