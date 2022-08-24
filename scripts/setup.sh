@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install fish shell
-sudo dnf insatll fish
+sudo dnf install fish
 
 echo "installing rust..."
 # install rust
