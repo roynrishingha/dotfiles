@@ -1,0 +1,6 @@
+require("packer_init")
+require("core.themes")
+require("core.autocmds")
+require("core.keymaps")
+require("core.options")
+require("core.statusline")
