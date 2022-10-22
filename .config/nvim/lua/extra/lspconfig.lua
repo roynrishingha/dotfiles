@@ -39,7 +39,7 @@ vim.cmd([[
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -106,15 +106,15 @@ end
 -- end
 
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-local servers = { 'rust_analyzer', 'sqlls', 'taplo', 'yamlls', 'dagger', 'sumneko_lua', 'bashls', }
+local servers = { 'rust_analyzer', 'sqlls', 'taplo', 'yamlls', 'sumneko_lua', 'bashls', }
 
 mason.setup({
     ui = {
         icons = {
             package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+            package_uninstalled = "✗",
+            package_pending = "⟳",
+        },
     }
 })
 
@@ -122,7 +122,6 @@ mason_lspconfig.setup({
     ensure_installed = servers,
     automatic_installation = true,
 })
-
 
 lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
@@ -144,10 +143,6 @@ lspconfig.taplo.setup({
 })
 
 lspconfig.yamlls.setup({
-    on_attach = on_attach
-})
-
-lspconfig.dagger.setup({
     on_attach = on_attach
 })
 

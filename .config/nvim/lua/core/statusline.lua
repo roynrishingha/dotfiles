@@ -58,10 +58,10 @@ local config = {
         }
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { branch, 'filename' },
+        lualine_a = { 'mode', branch },
+        lualine_b = { 'filename' },
         lualine_c = { 'lsp_progress' },
-        lualine_x = { filetype, diagnostics },
+        lualine_x = { diagnostics, filetype },
         lualine_y = { 'encoding' },
         lualine_z = { 'fileformat', location }
     },

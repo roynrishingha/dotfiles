@@ -90,34 +90,3 @@ map("x", "J", ":move '>+1<CR>gv-gv")
 map("x", "K", ":move '<-2<CR>gv-gv")
 map("x", "<A-j>", ":move '>+1<CR>gv-gv")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
------------------------------------------------------------
--- Applications and Plugins shortcuts
------------------------------------------------------------
-
--- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true }) -- open
-map('t', '<Esc>', '<C-\\><C-n>') -- exit
-
--- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>') -- refresh
-map('n', '<leader>n', ':NvimTreeFindFile<CR>') -- search file
-
--- Tagbar
-map('n', '<leader>z', ':TagbarToggle<CR>') -- open/close
-
--- fzf
-vim.g.fzf_buffers_jump = 1
-vim.keymap.set("n", "<leader><leader>", ":GFiles!<cr>'", { silent = true })
-vim.keymap.set("n", "<leader>ff", ":Files!<cr>'", { silent = true })
-vim.keymap.set("n", "<leader>f.", ":Files! " .. vim.fn.expand("%:p:h", { silent = true }))
-
-vim.keymap.set("n", "<leader>/", ":Rg!<cr>", { silent = true })
-
-vim.keymap.set("n", "<leader>bb", ":Buffers!<cr>", { silent = true })
-vim.keymap.set("n", "<leader>,", ":Buffers!<cr>", { silent = true })
-
--- Bufferline
-vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<cr>", { silent = true })
-vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<cr>", { silent = true })

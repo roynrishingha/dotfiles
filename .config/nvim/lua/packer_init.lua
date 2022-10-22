@@ -21,7 +21,6 @@ vim.cmd [[
   augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
     return
@@ -38,11 +37,37 @@ packer.init({
 
 -- Install plugins
 packer.startup(function(use)
-    -- Add you plugins here:
-    use 'wbthomason/packer.nvim' -- packer can manage itself
+    -- plugin manager
+    use 'wbthomason/packer.nvim'
 
     -- theme
     use 'sainnhe/everforest'
+
+    -- Chaching
+    use 'lewis6991/impatient.nvim'
+
+    -- Notification manager
+    use 'rcarriga/nvim-notify'
+
+    -- Neovim UI Enhancer
+    use 'stevearc/dressing.nvim'
+
+    -- vscode like LSP pictogram
+    use 'onsails/lspkind.nvim'
+
+    -- Bufferline
+    use 'akinsho/bufferline.nvim'
+
+    -- Better buffer closing
+    use 'famiu/bufdelete.nvim'
+
+    use {
+        's1n7ax/nvim-window-picker',
+        tag = 'v1.*',
+        config = function()
+            require 'window-picker'.setup()
+        end,
+    }
 
     -- Statusline
     use {
@@ -51,54 +76,92 @@ packer.startup(function(use)
     }
     use 'arkav/lualine-lsp-progress'
 
+
     -- File explorer
-    use 'kyazdani42/nvim-tree.lua'
-
-    -- Indent line
-    use 'lukas-reineke/indent-blankline.nvim'
-
-    -- Autopair
     use {
-        'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup {}
-        end
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        }
     }
 
-    -- Icons
-    use 'kyazdani42/nvim-web-devicons'
-
-    -- Tag viewer
-    use 'preservim/tagbar'
-
-    -- Treesitter interface
+    -- Syntax  highlighting
     use 'nvim-treesitter/nvim-treesitter'
 
-    -- LSP
+    -- Snippet collection
+    use 'rafamadriz/friendly-snippets'
+
+    -- Snippet engine
+    use 'L3MON4D3/LuaSnip'
+
+    -- Completion engine
+    use 'hrsh7th/nvim-cmp'
+
+    -- Snippet completion source
+    use 'saadparwaiz1/cmp_luasnip'
+
+    -- Buffer completion source
+    use 'hrsh7th/cmp-buffer'
+
+    -- Path completion source
+    use 'hrsh7th/cmp-path'
+
+    -- LSP completion source
+    use 'hrsh7th/cmp-nvim-lsp'
+
+    -- Built-in LSP
     use 'neovim/nvim-lspconfig'
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     }
 
-    -- Autocomplete
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'L3MON4D3/LuaSnip',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-buffer',
-            'saadparwaiz1/cmp_luasnip',
-        },
+    -- LSP symbols
+    use 'stevearc/aerial.nvim'
+
+    -- Fuzzy finder
+    use 'nvim-telescope/telescope.nvim'
+
+    -- Fuzzy finder syntax support
+    use { 'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     }
 
-    -- git labels
+    -- Formatting and linting
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("null-ls").setup()
+        end,
+        requires = { "nvim-lua/plenary.nvim" },
+    })
+
+    -- null-ls manager
+    use 'jayp0521/mason-null-ls.nvim'
+
+    -- Git integration
     use {
         'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+
+    -- Indentation
+    use 'lukas-reineke/indent-blankline.nvim'
+
+    -- Autopairs
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
+    -- Commenting
+    use {
+        'numToStr/Comment.nvim',
         config = function()
-            require('gitsigns').setup {}
+            require('Comment').setup()
         end
     }
 
@@ -108,43 +171,20 @@ packer.startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
-    -- trouble
+    -- Keymaps popup
+    use 'folke/which-key.nvim'
+
+    -- Code window
     use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
+        'gorbit99/codewindow.nvim',
+        config = function()
+            local codewindow = require('codewindow')
+            codewindow.setup()
+            codewindow.apply_default_keybinds()
+        end,
     }
 
-    -- Fuzzy search
-    use({
-        "junegunn/fzf.vim",
-        requires = {
-            "junegunn/fzf",
-        },
-    })
 
-    -- Buffer line
-    use({
-        "akinsho/nvim-bufferline.lua",
-        requires = {
-            "kyazdani42/nvim-web-devicons",
-        },
-        config = function()
-            require("bufferline").setup({})
-        end,
-    })
-
-    use({
-        "brymer-meneses/grammar-guard.nvim",
-        ft = {
-            "markdown",
-        },
-        config = function()
-            require("grammar-guard").init()
-        end,
-    })
-
-    -- Automatically set up configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
     if packer_bootstrap then
         require('packer').sync()
     end

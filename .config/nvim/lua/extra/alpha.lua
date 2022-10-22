@@ -5,11 +5,6 @@ end
 
 local dashboard = require('alpha.themes.dashboard')
 
--- Footer
-local function footer()
-    return "https://royrustdev.com"
-end
-
 -- Banner
 local banner = {
     "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
@@ -23,6 +18,7 @@ local banner = {
     " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
     "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
     "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
+    "        https://royrustdev.com         ",
 }
 
 dashboard.section.header.val = banner
@@ -35,7 +31,5 @@ dashboard.section.buttons.val = {
     dashboard.button('u', '  Update plugins', ':PackerUpdate<CR>'),
     dashboard.button('q', '  Quit', ':qa<CR>'),
 }
-
-dashboard.section.footer.val = footer()
 
 alpha.setup(dashboard.config)
