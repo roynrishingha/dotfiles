@@ -27,5 +27,5 @@ fi
 unset rc
 . "$HOME/.cargo/env"
 
+source ~/.bash_completion/alacritty
 eval "$(starship init bash)"
-

@@ -29,7 +29,7 @@ format = '[ $user ]($style)'
 
 [directory]
 style = "bg:#0072B5"
-format = "[ﳎ $path ]($style)"
+format = "[$path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 

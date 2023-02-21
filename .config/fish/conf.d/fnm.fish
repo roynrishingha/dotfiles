@@ -1,3 +1,3 @@
 # fnm
-set PATH /home/royrustdev/.fnm $PATH
-fnm env --use-on-cd | source
+set PATH "/home/royrustdev/.local/share/fnm" $PATH
+fnm env | source
