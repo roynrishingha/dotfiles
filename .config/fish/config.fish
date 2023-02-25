@@ -14,10 +14,14 @@ abbr -a e hx
 abbr -a g git
 abbr -a gb 'git branch'
 abbr -a gc 'git commit'
-abbr -a gcf 'git commit --amend --no-edit && git push --force-with-lease origin main'
+abbr -a gcf 'git commit --amend --no-edit && git push --force-with-lease origin'
+abbr -a gcl 'git clone'
 abbr -a gs 'git status'
 abbr -a gp 'git push'
 abbr -a ga 'git add'
+
+abbr -a mk minikube
+abbr -a k kubectl
 
 abbr -a pn pnpm
 
