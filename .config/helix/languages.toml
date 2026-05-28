@@ -1,0 +1,18 @@
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = { python = { analysis = { typeCheckingMode = "basic" } } }
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+# Add uv.lock to root markers so Helix detects your uv project roots
+roots = ["pyproject.toml", "uv.lock", "setup.py", ".git"]
+# Run both Pyright (types/completion) and Ruff (linting/imports)
+language-servers = ["pyright", "ruff"]
+# Set Ruff as the formatter
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true

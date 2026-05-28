@@ -1,38 +1,17 @@
 [user]
-	name = royrustdev
-	email = royrustdev@gmail.com
-
-[init]
-	defaultBranch = main
-
+	email = roynrishingha@gmail.com
+	name = roynrishingha
 [core]
 	editor = hx
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-	# use n and N to move between diff sections
-    navigate = true
-    line-numbers = true
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
+[init]
+	defaultBranch = main
 
 [color]
     ui = true
 
 [github]
-	user = royrustdev
+	user = roynrishingha
 [alias]
 	lg = log --oneline
 	last = log -1 HEAD
-	cl = log -p -- ':(exclude)Cargo.lock'
 	f = push --force-with-lease
-	# https://stackoverflow.com/a/11688523/472927
-	ss = "!f() { git stash show stash^{/$*} -p; }; f"
-	sa = "!f() { git stash apply stash^{/$*}; }; f"
-	sl = stash list

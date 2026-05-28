@@ -1,8 +1,11 @@
-theme = "everforest_dark"
+theme = "everblush"
 
 [editor]
 line-number = "relative"
 mouse = true
+bufferline = "always"
+color-modes = true
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,3 +14,12 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]

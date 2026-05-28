@@ -1,0 +1,5 @@
+inherits = "everblush"
+
+"comment" = "#22823E"
+"comment.block.documentation" = "#22823E"
+"comment.line.documentation" = "#22823E"
